@@ -1,0 +1,23 @@
+{
+    // Key and secret to identify the app. If not present the default is used
+    "key": "",
+    "secret": "",
+
+    // Access token to interact with the API (required)
+    "token": "3f5ae30bec381066c06134517c72e8cf5195c0f461da4c8dc6a7e4fcb3bf98d6",
+
+    // Cache unchanged responses for better performance
+    "use_cache": true,
+
+    // After creating elements or performing an action on them the panel reopens (until exit is selected)
+    "keep_navigate_open_after_action": true,
+
+    // Use a new tab when showing the results. If it's false it'll use a panel (like the ST console)
+    "results_in_new_tab": true,
+
+    // Syntax to use when showing the text from a trello element
+    "syntax_file": "Packages/Markdown/Markdown.tmLanguage",
+
+    // Set the delemiter used to create more than one card at once in 'Create card with description'
+    "card_delimiter": "<end>"
+}

@@ -1,0 +1,357 @@
+{
+    "last_local_data": {
+        "ApplySyntax.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/ApplySyntax.sublime-settings", 
+            "version": 1404218019.0
+        }, 
+        "BeautifyRuby.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/BeautifyRuby.sublime-settings", 
+            "version": 1407850322.0
+        }, 
+        "ClickableUrls.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/ClickableUrls.sublime-settings", 
+            "version": 1407771433.0
+        }, 
+        "CoffeeScript.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/CoffeeScript.sublime-settings", 
+            "version": 1407779706.0
+        }, 
+        "Default (Linux).sublime-keymap": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap", 
+            "version": 1404305507.0
+        }, 
+        "Gist.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/Gist.sublime-settings", 
+            "version": 1404218512.0
+        }, 
+        "HTML.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/HTML.sublime-settings", 
+            "version": 1416799032.0
+        }, 
+        "JSON.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/JSON.sublime-settings", 
+            "version": 1409233051.0
+        }, 
+        "JavaScript.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/JavaScript.sublime-settings", 
+            "version": 1416799017.0
+        }, 
+        "JavascriptBeautify.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/JavascriptBeautify.sublime-settings", 
+            "version": 1409233137.0
+        }, 
+        "LiveReload.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/LiveReload.sublime-settings", 
+            "version": 1407177437.0
+        }, 
+        "Lucario (SL).tmTheme": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/Lucario (SL).tmTheme", 
+            "version": 1403894092.0
+        }, 
+        "MarkdownPreview.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/MarkdownPreview.sublime-settings", 
+            "version": 1407184213.0
+        }, 
+        "Monokai (SL).tmTheme": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/Monokai (SL).tmTheme", 
+            "version": 1417607411.5971038
+        }, 
+        "PHP.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/PHP.sublime-settings", 
+            "version": 1406901418.0
+        }, 
+        "Package Control.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/Package Control.sublime-settings", 
+            "version": 1418394143.1
+        }, 
+        "Preferences.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/Preferences.sublime-settings", 
+            "version": 1418394143.25
+        }, 
+        "Python.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/Python.sublime-settings", 
+            "version": 1406901418.0
+        }, 
+        "Ruby Haml.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/Ruby Haml.sublime-settings", 
+            "version": 1406901418.0
+        }, 
+        "Ruby on Rails.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/Ruby on Rails.sublime-settings", 
+            "version": 1407763135.0
+        }, 
+        "Ruby.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/Ruby.sublime-settings", 
+            "version": 1406901418.0
+        }, 
+        "RubyTest.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/RubyTest.sublime-settings", 
+            "version": 1403896986.0
+        }, 
+        "Shell-Unix-Generic.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/Shell-Unix-Generic.sublime-settings", 
+            "version": 1406901418.0
+        }, 
+        "Side Bar.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/Side Bar.sublime-settings", 
+            "version": 1404330291.0
+        }, 
+        "Solarized (dark) (SL).tmTheme": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/Solarized (dark) (SL).tmTheme", 
+            "version": 1404139710.0
+        }, 
+        "Solarized Dark (SL).tmTheme": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/Solarized Dark (SL).tmTheme", 
+            "version": 1407951692.0
+        }, 
+        "SublimeCodeIntel.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/SublimeCodeIntel.sublime-settings", 
+            "version": 1416926350.3712795
+        }, 
+        "SublimeLinter.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings", 
+            "version": 1416926961.5938182
+        }, 
+        "Tomorrow-Night (SL).tmTheme": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/Tomorrow-Night (SL).tmTheme", 
+            "version": 1403788015.0
+        }, 
+        "Tomorrow-Night-Eighties (SL).tmTheme": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/Tomorrow-Night-Eighties (SL).tmTheme", 
+            "version": 1414419910.0
+        }, 
+        "Trello.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/Trello.sublime-settings", 
+            "version": 1406125309.0
+        }, 
+        "XML.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/XML.sublime-settings", 
+            "version": 1406901418.0
+        }, 
+        "YAML.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/YAML.sublime-settings", 
+            "version": 1417531817.6334283
+        }, 
+        "codeivate-st.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/codeivate-st.sublime-settings", 
+            "version": 1416797876.0
+        }, 
+        "fpc.sublime-build": {
+            "dir": "", 
+            "path": "/home/sergio/.config/sublime-text-3/Packages/User/fpc.sublime-build", 
+            "version": 1416176750.0
+        }
+    }, 
+    "last_remote_data": {
+        "ApplySyntax.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/ApplySyntax.sublime-settings", 
+            "version": 1404218019.0
+        }, 
+        "BeautifyRuby.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/BeautifyRuby.sublime-settings", 
+            "version": 1407850322.0
+        }, 
+        "ClickableUrls.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/ClickableUrls.sublime-settings", 
+            "version": 1407771433.0
+        }, 
+        "CoffeeScript.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/CoffeeScript.sublime-settings", 
+            "version": 1407779706.0
+        }, 
+        "Default (Linux).sublime-keymap": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/Default (Linux).sublime-keymap", 
+            "version": 1404305507.0
+        }, 
+        "Gist.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/Gist.sublime-settings", 
+            "version": 1404218512.0
+        }, 
+        "HTML.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/HTML.sublime-settings", 
+            "version": 1416799032.0
+        }, 
+        "JSON.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/JSON.sublime-settings", 
+            "version": 1409233051.0
+        }, 
+        "JavaScript.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/JavaScript.sublime-settings", 
+            "version": 1416799017.0
+        }, 
+        "JavascriptBeautify.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/JavascriptBeautify.sublime-settings", 
+            "version": 1409233137.0
+        }, 
+        "LiveReload.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/LiveReload.sublime-settings", 
+            "version": 1407177437.0
+        }, 
+        "Lucario (SL).tmTheme": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/Lucario (SL).tmTheme", 
+            "version": 1403894092.0
+        }, 
+        "MarkdownPreview.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/MarkdownPreview.sublime-settings", 
+            "version": 1407184213.0
+        }, 
+        "Monokai (SL).tmTheme": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/Monokai (SL).tmTheme", 
+            "version": 1417607411.5971038
+        }, 
+        "PHP.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/PHP.sublime-settings", 
+            "version": 1406901418.0
+        }, 
+        "Package Control.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/Package Control.sublime-settings", 
+            "version": 1418394143.1
+        }, 
+        "Preferences.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/Preferences.sublime-settings", 
+            "version": 1418394143.25
+        }, 
+        "Python.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/Python.sublime-settings", 
+            "version": 1406901418.0
+        }, 
+        "Ruby Haml.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/Ruby Haml.sublime-settings", 
+            "version": 1406901418.0
+        }, 
+        "Ruby on Rails.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/Ruby on Rails.sublime-settings", 
+            "version": 1407763135.0
+        }, 
+        "Ruby.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/Ruby.sublime-settings", 
+            "version": 1406901418.0
+        }, 
+        "RubyTest.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/RubyTest.sublime-settings", 
+            "version": 1403896986.0
+        }, 
+        "Shell-Unix-Generic.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/Shell-Unix-Generic.sublime-settings", 
+            "version": 1406901418.0
+        }, 
+        "Side Bar.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/Side Bar.sublime-settings", 
+            "version": 1404330291.0
+        }, 
+        "Solarized (dark) (SL).tmTheme": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/Solarized (dark) (SL).tmTheme", 
+            "version": 1404139710.0
+        }, 
+        "Solarized Dark (SL).tmTheme": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/Solarized Dark (SL).tmTheme", 
+            "version": 1407951692.0
+        }, 
+        "SublimeCodeIntel.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/SublimeCodeIntel.sublime-settings", 
+            "version": 1416926350.3712795
+        }, 
+        "SublimeLinter.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/SublimeLinter.sublime-settings", 
+            "version": 1416926961.5938182
+        }, 
+        "Tomorrow-Night (SL).tmTheme": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/Tomorrow-Night (SL).tmTheme", 
+            "version": 1403788015.0
+        }, 
+        "Tomorrow-Night-Eighties (SL).tmTheme": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/Tomorrow-Night-Eighties (SL).tmTheme", 
+            "version": 1414419910.0
+        }, 
+        "Trello.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/Trello.sublime-settings", 
+            "version": 1406125309.0
+        }, 
+        "XML.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/XML.sublime-settings", 
+            "version": 1406901418.0
+        }, 
+        "YAML.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/YAML.sublime-settings", 
+            "version": 1417531817.6334283
+        }, 
+        "codeivate-st.sublime-settings": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/codeivate-st.sublime-settings", 
+            "version": 1416797876.0
+        }, 
+        "fpc.sublime-build": {
+            "dir": "", 
+            "path": "/home/sergio/Dropbox/ST3/fpc.sublime-build", 
+            "version": 1416176750.0
+        }
+    }, 
+    "remove_packages": []
+}

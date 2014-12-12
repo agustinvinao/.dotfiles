@@ -1,0 +1,17 @@
+{
+    "ruby_verify_command": "-c {relative_path} -n {file_name}",
+    "run_ruby_unit_command": "-Itest {relative_path}",
+    "run_single_ruby_unit_command": "-Itest {relative_path} -n '{test_name}'",
+
+    // zeus rake test: x
+
+    "check_for_rvm": true,
+    "check_for_bundler": false,
+    "check_for_spring": false,
+
+    "save_on_run": false,
+    "ignored_directories": [".git", "vendor", "tmp"],
+
+    "theme": "Packages/RubyTest/TestConsole.hidden-tmTheme",
+    "syntax": "Packages/RubyTest/TestConsole.tmLanguage"
+}

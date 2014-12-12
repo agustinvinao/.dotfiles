@@ -1,0 +1,21 @@
+{
+	"bold_folder_labels": true,
+	"color_scheme": "Packages/User/Tomorrow-Night-Eighties (SL).tmTheme",
+	"font_face": "Meslo LG S",
+	"font_size": 8,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"rulers":
+	[
+		80
+	],
+	"scroll_speed": 0,
+	"spacegray_sidebar_font_normal": true,
+	"spacegray_sidebar_tree_normal": true,
+	"spacegray_tabs_normal": true,
+	"theme": "Spacegray Eighties.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true
+}

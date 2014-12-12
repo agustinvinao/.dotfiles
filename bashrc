@@ -56,8 +56,8 @@ fi
 
 ## TMUX
 # Start tmux on every shell login
-[[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux
+#[[ $- != *i* ]] && return
+#[[ -z "$TMUX" ]] && exec tmux
 
 # Export 256colors
 if [ -n "$TMUX" ]; then

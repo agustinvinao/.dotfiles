@@ -1,0 +1,21 @@
+[user]
+  	name = Agustin Vinao 
+  	email = agustinvinao@gmail.com
+[core]
+  	autosetuprebase = true
+  	editor = vim
+[color]
+  	ui = auto
+[fetch]
+  	prune = true
+[merge]
+  	ff = only
+[commit]
+  	template = ~/.gitmessage
+[push]
+  	default = simple
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	ci = commit

@@ -1,0 +1,4 @@
+colorscheme Tomorrow-Night
+set term=screen-256color
+"Disable unneeded spf-13 plugins
+""ex. UnBundle 'scrooloose/syntastic'

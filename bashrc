@@ -1,5 +1,6 @@
 xhost +local:root > /dev/null 2>&1
 
+source ~/.secrets
 source /usr/share/chruby/chruby.sh
 source /usr/share/chruby/auto.sh
 source /usr/share/git/completion/git-completion.bash
@@ -56,8 +57,8 @@ fi
 
 ## TMUX
 # Start tmux on every shell login
-#[[ $- != *i* ]] && return
-#[[ -z "$TMUX" ]] && exec tmux
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && exec tmux
 
 # Export 256colors
 if [ -n "$TMUX" ]; then

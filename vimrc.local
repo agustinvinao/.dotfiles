@@ -1,5 +1,0 @@
-colorscheme Tomorrow-Night
-let &colorcolumn="80,".join(range(120,999),",")
-set term=screen-256color
-"Disable unneeded spf-13 plugins
-""ex. UnBundle 'scrooloose/syntastic'

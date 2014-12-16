@@ -11,7 +11,9 @@ restore_view.vim
 sessionman.vim
 syntastic
 tabular
+tmuxline.vim
 undotree
+vim-airline
 vim-coffee-script
 vim-coloresque
 vim-colorschemes

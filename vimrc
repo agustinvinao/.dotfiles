@@ -1,5 +1,7 @@
 " .vimrc
+
 source ~/.vimrc.bundles
+
 set encoding=utf-8
 set autoindent                    " set auto indent
 set ts=2                          " set indent to 2 spaces
@@ -24,17 +26,53 @@ set nofoldenable                  " disable code folding
 set clipboard=unnamed             " use the system clipboard
 set wildmenu                      " enable bash style tab completion
 set wildmode=list:longest,full
-set nobackup
-set nowritebackup
-set noswapfile  
-set statusline=%F%m%r%h%w\ %{fugitive#statusline()}\ [%l,%c]\ [%L,%p%%] " put git status, column/row number, total lines, and percentage in status
-set term=screen-256color
-set background=dark
-
 syntax on                         " show syntax highlighting
 filetype plugin indent on
+let mapleader=" "                 "Map Leader to space
+
+"Disable swap/backup files
+set nobackup
+set nowritebackup
+set noswapfile
+
+" put git status, column/row number, total lines, and percentage in status
+set statusline=%F%m%r%h%w\ %{fugitive#statusline()}\ [%l,%c]\ [%L,%p%%]
+
+" set dark background and color scheme
+set term=screen-256color
+set background=dark
 color Tomorrow-Night
-let mapleader=" "
+
+" set up some custom colors
+highlight clear SignColumn
+highlight VertSplit    ctermbg=236
+highlight ColorColumn  ctermbg=237
+highlight LineNr       ctermbg=236 ctermfg=240
+highlight CursorLineNr ctermbg=236 ctermfg=240
+highlight CursorLine   ctermbg=236
+highlight StatusLineNC ctermbg=238 ctermfg=0
+highlight StatusLine   ctermbg=240 ctermfg=12
+highlight IncSearch    ctermbg=3   ctermfg=1
+highlight Search       ctermbg=1   ctermfg=3
+highlight Visual       ctermbg=3   ctermfg=0
+highlight Pmenu        ctermbg=240 ctermfg=12
+highlight PmenuSel     ctermbg=3   ctermfg=1
+highlight SpellBad     ctermbg=0   ctermfg=1
+
+" highlight the status bar when in insert mode
+if version >= 700
+  au InsertEnter * hi StatusLine ctermfg=235 ctermbg=2
+  au InsertLeave * hi StatusLine ctermbg=240 ctermfg=12
+endif
+
+" highlight trailing spaces in annoying red
+highlight ExtraWhitespace ctermbg=1 guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
 
 " NEOCOMPL config
 " Disable AutoComplPop.
@@ -93,48 +131,13 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
 endif
 " END NEOCOMPL config
 
-
-" Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
-
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
 " Make it obvious where 80 characters is
 set textwidth=80
 set colorcolumn=+1
 
-" Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
-let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
-
-" Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R .<CR>
-
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-
-" vim-rspec mappings
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>s :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
-
-" Run commands that require an interactive shell
-nnoremap <Leader>r :RunInInteractiveShell<space>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -153,13 +156,10 @@ nnoremap <C-l> <C-w>l
 let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 
-" Set spellfile to location that is guaranteed to exist, can be symlinked to
-" Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
-"set spellfile=$HOME/.vim-spell-en.utf-8.add
-
 " Always use vertical diffs
 set diffopt+=vertical
 
+"Make vim multiple cursors compatible with neocomplete
 " Called once right before you start selecting multiple cursors
 function! Multiple_cursors_before()
   if exists(':NeoCompleteLock')==2
@@ -174,5 +174,274 @@ function! Multiple_cursors_after()
   endif
 endfunction
 
+" Airline configuration
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+" use silver searcher for ctrlp
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_max_height = 30
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_match_window_reversed = 0
+
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"CHRISHUNT EXTRA CONFIG
+
+"" unmap F1 help
+"nmap <F1> <nop>
+"imap <F1> <nop>
+""" unmap ex mode: 'Type visual to go into Normal mode.'
+"nnoremap Q <nop>
+"
+"" map . in visual mode
+"vnoremap . :norm.<cr>
+"
+"" map markdown preview
+"map <leader>m :!open -a Marked %<cr><cr>
+"
+"" map git commands
+"map <leader>b :Gblame<cr>
+"map <leader>l :!clear && git log -p %<cr>
+"map <leader>d :!clear && git diff %<cr>
+"
+"" map Silver Searcher
+"map <leader>a :Ag!<space>
+"
+"" clear the command line and search highlighting
+"noremap <C-l> :nohlsearch<CR>
+"
+"" toggle spell check with <F5>
+"map <F5> :setlocal spell! spelllang=en_us<cr>
+"imap <F5> <ESC>:setlocal spell! spelllang=en_us<cr>
+"
+"" add :Plain command for converting text to plaintext
+"command! Plain execute "%s/’/'/ge | %s/[“”]/\"/ge | %s/—/-/ge"
+"
+"" hint to keep lines short
+"if exists('+colorcolumn')
+  "set colorcolumn=80
+"endif
+"
+"" jump to last position in file
+"autocmd BufReadPost *
+  "\ if line("'\"") > 0 && line("'\"") <= line("$") |
+  "\   exe "normal g`\"" |
+  "\ endif
+"
+"" multi-purpose tab key (auto-complete)
+"function! InsertTabWrapper()
+  "let col = col('.') - 1
+  "if !col || getline('.')[col - 1] !~ '\k'
+    "return "\<tab>"
+  "else
+    "return "\<c-p>"
+  "endif
+"endfunction
+"inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+"inoremap <s-tab> <c-n>
+"
+"" rename current file, via Gary Bernhardt
+"function! RenameFile()
+  "let old_name = expand('%')
+  "let new_name = input('New file name: ', expand('%'))
+  "if new_name != '' && new_name != old_name
+    "exec ':saveas ' . new_name
+    "exec ':silent !rm ' . old_name
+    "redraw!
+  "endif
+"endfunction
+"map <leader>n :call RenameFile()<cr>
+"
+"function! RunTests(filename)
+  "" Write the file and run tests for the given filename
+  ":w
+  ":silent !clear
+  "if match(a:filename, '\.feature$') != -1
+    "exec ":!bundle exec cucumber " . a:filename
+  "elseif match(a:filename, '_test\.rb$') != -1
+    "if filereadable("bin/testrb")
+      "exec ":!bin/testrb " . a:filename
+    "else
+      "exec ":!ruby -Itest " . a:filename
+    "end
+  "else
+    "if filereadable("Gemfile")
+      "exec ":!bundle exec rspec --color " . a:filename
+    "else
+      "exec ":!rspec --color " . a:filename
+    "end
+  "end
+"endfunction
+"
+"function! SetTestFile()
+  "" set the spec file that tests will be run for.
+  "let t:grb_test_file=@%
+"endfunction
+"
+"function! RunTestFile(...)
+  "if a:0
+    "let command_suffix = a:1
+  "else
+    "let command_suffix = ""
+  "endif
+"
+  "" run the tests for the previously-marked file.
+  "let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
+  "if in_test_file
+    "call SetTestFile()
+  "elseif !exists("t:grb_test_file")
+    "return
+  "end
+  "call RunTests(t:grb_test_file . command_suffix)
+"endfunction
+"
+"function! RunNearestTest()
+  "let spec_line_number = line('.')
+  "call RunTestFile(":" . spec_line_number . " -b")
+"endfunction
+"
+"" run test runner
+"map <leader>t :call RunTestFile()<cr>
+"map <leader>T :call RunNearestTest()<cr>
+
+
+
+
+
+
+"THOUGHTBOT EXTRA CONFIGS
+"" Use Vim settings, rather then Vi settings. This setting must be as early as
+"" possible, as it has side effects.
+"set nocompatible
+"
+"" Leader
+"let mapleader = " "
+"
+"set backspace=2   " Backspace deletes like most programs in insert mode
+"set nobackup
+"set nowritebackup
+"set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+"set history=50
+"set ruler         " show the cursor position all the time
+"set showcmd       " display incomplete commands
+"set incsearch     " do incremental searching
+"set laststatus=2  " Always display the status line
+"set autowrite     " Automatically :write before running commands
+"
+"" Switch syntax highlighting on, when the terminal has colors
+"" Also switch on highlighting the last used search pattern.
+"if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
+  "syntax on
+"endif
+"
+"if filereadable(expand("~/.vimrc.bundles"))
+  "source ~/.vimrc.bundles
+"endif
+"
+"filetype plugin indent on
+"
+"augroup vimrcEx
+  "autocmd!
+"
+  "" When editing a file, always jump to the last known cursor position.
+  "" Don't do it for commit messages, when the position is invalid, or when
+  "" inside an event handler (happens when dropping a file on gvim).
+  "autocmd BufReadPost *
+    "\ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+    "\   exe "normal g`\"" |
+    "\ endif
+"
+  "" Cucumber navigation commands
+  "autocmd User Rails Rnavcommand step features/step_definitions -glob=**/* -suffix=_steps.rb
+  "autocmd User Rails Rnavcommand config config -glob=**/* -suffix=.rb -default=routes
+"
+  "" Set syntax highlighting for specific file types
+  "autocmd BufRead,BufNewFile Appraisals set filetype=ruby
+  "autocmd BufRead,BufNewFile *.md set filetype=markdown
+"
+  "" Enable spellchecking for Markdown
+  "autocmd FileType markdown setlocal spell
+"
+  "" Automatically wrap at 80 characters for Markdown
+  "autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+"
+  "" Automatically wrap at 72 characters and spell check git commit messages
+  "autocmd FileType gitcommit setlocal textwidth=72
+  "autocmd FileType gitcommit setlocal spell
+"
+  "" Allow stylesheets to autocomplete hyphenated words
+  "autocmd FileType css,scss,sass setlocal iskeyword+=-
+"augroup END
+"
+"" Softtabs, 2 spaces
+"set tabstop=2
+"set shiftwidth=2
+"set shiftround
+"set expandtab
+"
+"
+"" Color scheme
+"highlight NonText guibg=#060606
+"highlight Folded  guibg=#0A0A0A guifg=#9090D0
+"
+"" Numbers
+"set number
+"set numberwidth=5
+"
+"" Tab completion
+"" will insert tab at beginning of line,
+"" will use completion if not at beginning
+"set wildmode=list:longest,list:full
+"function! InsertTabWrapper()
+    "let col = col('.') - 1
+    "if !col || getline('.')[col - 1] !~ '\k'
+        "return "\<tab>"
+    "else
+        "return "\<c-p>"
+    "endif
+"endfunction
+"inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+"inoremap <S-Tab> <c-n>
+"
+
+"" Switch between the last two files
+"nnoremap <leader><leader> <c-^>
+"
+"
+"" Run commands that require an interactive shell
+"nnoremap <Leader>r :RunInInteractiveShell<space>
+"
+"" Set spellfile to location that is guaranteed to exist, can be symlinked to
+"" Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
+"set spellfile=$HOME/.vim-spell-en.utf-8.add
+"

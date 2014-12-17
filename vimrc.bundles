@@ -23,6 +23,7 @@ NeoBundle 'tpope/vim-rails'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'edkolev/tmuxline.vim'
+NeoBundle 'rking/ag.vim'
 
 "MOST HAVES
 "NeoBundle 'tpope/vim-fugitive'
@@ -66,7 +67,6 @@ NeoBundle 'edkolev/tmuxline.vim'
 "NeoBundle 'vim-scripts/tComment'
 
 "chrishunt
-"NeoBundle 'ag-vim'
 "NeoBundle 'colors-base16'
 "NeoBundle 'dash'
 "NeoBundle 'funcoo'

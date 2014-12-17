@@ -1,3 +1,7 @@
+source ~/.secrets
+source /usr/share/chruby/chruby.sh
+source /usr/share/chruby/auto.sh
+
 xhost +local:root > /dev/null 2>&1
 
 complete -cf sudo
@@ -45,3 +49,19 @@ PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\ \[\e[1;32m\]\$ \[\e[m\]\[\e[m\]\[\e[
 if [ -f /etc/bash_completion ]; then
         . /etc/bash_completion
 fi
+
+## TMUX
+# Start tmux on every shell login
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && exec tmux
+
+# Export 256colors
+if [ -n "$TMUX" ]; then
+    case $COLORTERM in
+        Terminal) export TERM=screen-256color ;;         # this is XFCE Terminal
+        gnome-terminal) export TERM=xterm-256color ;;   # this is gnome-terminal
+    esac
+fi
+
+# ?
+alias tmux="tmux -2"

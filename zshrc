@@ -1,5 +1,3 @@
-source ~/.secrets
-
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
 
@@ -32,7 +30,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=es_AR.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -45,4 +43,5 @@ fi
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 alias subl='subl3'
 
-ZSH_TMUX_AUTOSTART="true"
+zstyle ':omz:module:pacman' frontend 'yaourt'
+zstyle ':omz:module:tmux' auto-start 'yes'

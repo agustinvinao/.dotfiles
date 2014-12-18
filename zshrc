@@ -1,3 +1,6 @@
+source /usr/share/chruby/chruby.sh
+source /usr/share/chruby/auto.sh
+
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
 
@@ -21,7 +24,7 @@ COMPLETION_WAITING_DOTS="true"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(archlinux bower bundler chruby common-aliases git gem node npm rails ruby sudo systemd tmux tmuxinator vi-mode)
+plugins=(archlinux bower bundler chruby common-aliases git gem node npm rails ruby sudo systemd tmux tmuxinator) #vi-mode
 
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -30,7 +33,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-export LANG=es_AR.UTF-8
+export LANG="es_AR"
+export LANGUAGE="es_AR"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -44,4 +48,12 @@ fi
 alias subl='subl3'
 
 zstyle ':omz:module:pacman' frontend 'yaourt'
+
 zstyle ':omz:module:tmux' auto-start 'yes'
+## TMUX
+# Start tmux on every shell login
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && exec tmux
+
+# ?
+alias tmux="tmux -2"

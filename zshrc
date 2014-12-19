@@ -1,8 +1,8 @@
-source /usr/share/chruby/chruby.sh
-source /usr/share/chruby/auto.sh
-
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
+
+source /usr/share/chruby/chruby.sh
+source /usr/share/chruby/auto.sh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -13,7 +13,7 @@ ZSH_THEME="robbyrussell"
 DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -24,7 +24,7 @@ COMPLETION_WAITING_DOTS="true"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(archlinux bower bundler chruby common-aliases git gem node npm rails ruby sudo systemd tmux tmuxinator) #vi-mode
+plugins=(archlinux bower bundler common-aliases git gem node npm rails ruby sudo systemd tmux tmuxinator) #vi-mode chruby
 
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$PATH

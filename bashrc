@@ -37,6 +37,7 @@ alias fixit='sudo rm -f /var/lib/pacman/db.lck && sudo pacman-mirrors -g && sudo
 
 alias $EDITOR='vim'
 alias edit=$EDITOR
+alias NANO=$EDITOR
 
 SDL_VIDEO_FULLSCREEN_HEAD=0
 

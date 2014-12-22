@@ -17,22 +17,19 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Add or remove your Bundles here:
 NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'rking/ag.vim'
-
-"MUST HAVES
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
-"NeoBundle 'Lokaltog/vim-easymotion'
-"NeoBundle 'mattn/gist-vim'
-"NeoBundle 'tpope/vim-commentary'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'mattn/gist-vim'
 NeoBundle 'scrooloose/nerdcommenter'
-"NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/syntastic'
 
 "SPF13and and repeated
 "NeoBundle 'jistr/vim-nerdtree-tabs'

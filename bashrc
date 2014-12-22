@@ -23,7 +23,7 @@ export EDITOR='vim'
 #export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 #export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export GMAIL_USERNAME='smarquez@devspark.com'
-export TERM="xterm-256color"
+export TERM=screen-256color-bce
 
 alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
@@ -38,7 +38,7 @@ alias fixit='sudo rm -f /var/lib/pacman/db.lck && sudo pacman-mirrors -g && sudo
 alias $EDITOR='vim'
 alias edit=$EDITOR
 alias NANO=$EDITOR
-
+alias tmux='alias tmux="TERM=screen-256color-bce tmux"
 SDL_VIDEO_FULLSCREEN_HEAD=0
 
 # prompt

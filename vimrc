@@ -40,11 +40,10 @@ set noswapfile
 set statusline=%F%m%r%h%w\ %{fugitive#statusline()}\ [%l,%c]\ [%L,%p%%]
 
 " set dark background and color scheme
+let base16colorspace=256 " Access colors present in 256 colorspace
+set t_Co=256 " 256 color mode
 set background=dark
-color Tomorrow-Night
-hi LineNr ctermfg=grey "Line numbers dissapear with tomorrow night
-hi Visual term=reverse cterm=reverse guibg=Grey "highlight visual block selection
-
+colorscheme base16-tomorrow
 "highlight the status bar when in insert mode
 if version >= 700
   au InsertEnter * hi StatusLine ctermfg=235 ctermbg=2
@@ -191,15 +190,17 @@ augroup END
 silent! nmap <C-e> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 40
 
+"Easymotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
+" Bi-directional find motion
+" `s{char}{char}{label}`
+" Turn on case sensitive feature
+let g:EasyMotion_smartcase = 1
 
-
-
-
-
-
-
-
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 
 

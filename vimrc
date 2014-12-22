@@ -14,7 +14,8 @@ set ignorecase                    " ignore case in search
 set hlsearch                      " highlight all search matches
 set cursorline                    " highlight current line
 set smartcase                     " pay attention to case when caps are used
-set incsearch                     " show search results as I type
+set incsearch                     " show search results as I ttytype
+set ignorecase 
 set mouse=a                       " enable mouse support
 set ttimeoutlen=100               " decrease timeout for faster insert with 'O'
 set vb                            " enable visual bell (disable audio bell)
@@ -39,11 +40,11 @@ set noswapfile
 set statusline=%F%m%r%h%w\ %{fugitive#statusline()}\ [%l,%c]\ [%L,%p%%]
 
 " set dark background and color scheme
-set term=screen-256color
 set background=dark
 color Tomorrow-Night
+highlight LineNr ctermfg=grey "Line numbers dissapear with tomorrow night
 
-" highlight the status bar when in insert mode
+"highlight the status bar when in insert mode
 if version >= 700
   au InsertEnter * hi StatusLine ctermfg=235 ctermbg=2
   au InsertLeave * hi StatusLine ctermbg=240 ctermfg=12
@@ -163,7 +164,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 " use silver searcher for ctrlp
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_max_height = 30
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_match_window_reversed = 0
@@ -180,7 +180,11 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-
+"watch for changes in .vimrc and automatically reload the config.
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
 
 
 

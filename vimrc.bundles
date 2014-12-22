@@ -25,13 +25,13 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'rking/ag.vim'
 
-"MOST HAVES
-"NeoBundle 'tpope/vim-fugitive'
-"NeoBundle 'tpope/vim-surround'
+"MUST HAVES
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-surround'
 "NeoBundle 'Lokaltog/vim-easymotion'
 "NeoBundle 'mattn/gist-vim'
 "NeoBundle 'tpope/vim-commentary'
-"NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'scrooloose/nerdcommenter'
 "NeoBundle 'scrooloose/syntastic'
 
 "SPF13and and repeated

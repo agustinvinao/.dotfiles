@@ -52,8 +52,8 @@ zstyle ':omz:module:pacman' frontend 'yaourt'
 zstyle ':omz:module:tmux' auto-start 'yes'
 ## TMUX
 # Start tmux on every shell login
-[[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux
+#[[ $- != *i* ]] && return
+#[[ -z "$TMUX" ]] && exec tmux
 
 # Base16 Shell
 # git clone git@github.com:chriskempson/base16-shell.git ~/.config/base16-shell

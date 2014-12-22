@@ -162,7 +162,7 @@ endfunction
 " Airline configuration
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-
+let g:airline_theme='tomorrow'
 " use silver searcher for ctrlp
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_match_window_reversed = 0
@@ -187,68 +187,48 @@ augroup myvimrc
 augroup END
 
 "NERDTree
-silent! nmap <C-e> :NERDTreeToggle<CR>
-let g:NERDTreeWinSize = 40
+silent! nmap <C-e> :NERDTreeTabsToggle<CR>
+"let g:NERDTreeWinSize = 40
 
 "Easymotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
-
-" Bi-directional find motion
-" `s{char}{char}{label}`
+nmap s <Plug>(easymotion-s)
 " Turn on case sensitive feature
 let g:EasyMotion_smartcase = 1
-
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment
 
+hi link EasyMotionTarget2First MatchParen
+hi link EasyMotionTarget2Second MatchParen
 
 
 "CHRISHUNT EXTRA CONFIG
 
-"" unmap F1 help
-"nmap <F1> <nop>
-"imap <F1> <nop>
-""" unmap ex mode: 'Type visual to go into Normal mode.'
-"nnoremap Q <nop>
-"
-"" map . in visual mode
+" unmap ex mode: 'Type visual to go into Normal mode.'
+nnoremap Q <nop>
+
+" map . in visual mode
 "vnoremap . :norm.<cr>
 "
-"" map markdown preview
+" map markdown preview
 "map <leader>m :!open -a Marked %<cr><cr>
 "
-"" map git commands
+" map git commands
 "map <leader>b :Gblame<cr>
 "map <leader>l :!clear && git log -p %<cr>
 "map <leader>d :!clear && git diff %<cr>
 "
-"" map Silver Searcher
-"map <leader>a :Ag!<space>
+" map Silver Searcher
+map <leader>a :Ag!<space>
 "
-"" clear the command line and search highlighting
-"noremap <C-l> :nohlsearch<CR>
+" clear the command line and search highlighting
+noremap <C-l> :nohlsearch<CR>
 "
-"" toggle spell check with <F5>
-"map <F5> :setlocal spell! spelllang=en_us<cr>
-"imap <F5> <ESC>:setlocal spell! spelllang=en_us<cr>
-"
-"" add :Plain command for converting text to plaintext
-"command! Plain execute "%s/’/'/ge | %s/[“”]/\"/ge | %s/—/-/ge"
-"
-"" hint to keep lines short
-"if exists('+colorcolumn')
-  "set colorcolumn=80
-"endif
-"
-"" jump to last position in file
-"autocmd BufReadPost *
-  "\ if line("'\"") > 0 && line("'\"") <= line("$") |
-  "\   exe "normal g`\"" |
-  "\ endif
-"
-"" multi-purpose tab key (auto-complete)
+" multi-purpose tab key (auto-complete)
 "function! InsertTabWrapper()
   "let col = col('.') - 1
   "if !col || getline('.')[col - 1] !~ '\k'
@@ -260,7 +240,7 @@ map <Leader>k <Plug>(easymotion-k)
 "inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 "inoremap <s-tab> <c-n>
 "
-"" rename current file, via Gary Bernhardt
+" rename current file, via Gary Bernhardt
 "function! RenameFile()
   "let old_name = expand('%')
   "let new_name = input('New file name: ', expand('%'))
@@ -273,7 +253,7 @@ map <Leader>k <Plug>(easymotion-k)
 "map <leader>n :call RenameFile()<cr>
 "
 "function! RunTests(filename)
-  "" Write the file and run tests for the given filename
+  " Write the file and run tests for the given filename
   ":w
   ":silent !clear
   "if match(a:filename, '\.feature$') != -1
@@ -292,12 +272,12 @@ map <Leader>k <Plug>(easymotion-k)
     "end
   "end
 "endfunction
-"
+
 "function! SetTestFile()
   "" set the spec file that tests will be run for.
   "let t:grb_test_file=@%
 "endfunction
-"
+
 "function! RunTestFile(...)
   "if a:0
     "let command_suffix = a:1
@@ -305,7 +285,7 @@ map <Leader>k <Plug>(easymotion-k)
     "let command_suffix = ""
   "endif
 "
-  "" run the tests for the previously-marked file.
+  " run the tests for the previously-marked file.
   "let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
   "if in_test_file
     "call SetTestFile()
@@ -314,42 +294,19 @@ map <Leader>k <Plug>(easymotion-k)
   "end
   "call RunTests(t:grb_test_file . command_suffix)
 "endfunction
-"
+
 "function! RunNearestTest()
   "let spec_line_number = line('.')
   "call RunTestFile(":" . spec_line_number . " -b")
 "endfunction
-"
-"" run test runner
+
+" run test runner
 "map <leader>t :call RunTestFile()<cr>
 "map <leader>T :call RunNearestTest()<cr>
-
-" set up some custom colors
-"highlight clear SignColumn
-"highlight VertSplit    ctermbg=236
-"highlight ColorColumn  ctermbg=237
-"highlight LineNr       ctermbg=236 ctermfg=240
-"highlight CursorLineNr ctermbg=236 ctermfg=240
-"highlight CursorLine   ctermbg=236
-"highlight StatusLineNC ctermbg=238 ctermfg=0
-"highlight StatusLine   ctermbg=240 ctermfg=12
-"highlight IncSearch    ctermbg=3   ctermfg=1
-"highlight Search       ctermbg=1   ctermfg=3
-"highlight Visual       ctermbg=3   ctermfg=0
-"highlight Pmenu        ctermbg=240 ctermfg=12
-"highlight PmenuSel     ctermbg=3   ctermfg=1
-"highlight SpellBad     ctermbg=0   ctermfg=1
-
-
 
 "THOUGHTBOT EXTRA CONFIGS
 "" Use Vim settings, rather then Vi settings. This setting must be as early as
 "" possible, as it has side effects.
-"set nocompatible
-"
-"" Leader
-"let mapleader = " "
-"
 "set backspace=2   " Backspace deletes like most programs in insert mode
 "set nobackup
 "set nowritebackup
@@ -360,19 +317,7 @@ map <Leader>k <Plug>(easymotion-k)
 "set incsearch     " do incremental searching
 "set laststatus=2  " Always display the status line
 "set autowrite     " Automatically :write before running commands
-"
-"" Switch syntax highlighting on, when the terminal has colors
-"" Also switch on highlighting the last used search pattern.
-"if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  "syntax on
-"endif
-"
-"if filereadable(expand("~/.vimrc.bundles"))
-  "source ~/.vimrc.bundles
-"endif
-"
-"filetype plugin indent on
-"
+
 "augroup vimrcEx
   "autocmd!
 "
@@ -384,46 +329,33 @@ map <Leader>k <Plug>(easymotion-k)
     "\   exe "normal g`\"" |
     "\ endif
 "
-  "" Cucumber navigation commands
-  "autocmd User Rails Rnavcommand step features/step_definitions -glob=**/* -suffix=_steps.rb
-  "autocmd User Rails Rnavcommand config config -glob=**/* -suffix=.rb -default=routes
-"
   "" Set syntax highlighting for specific file types
   "autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   "autocmd BufRead,BufNewFile *.md set filetype=markdown
-"
+
   "" Enable spellchecking for Markdown
   "autocmd FileType markdown setlocal spell
-"
+
   "" Automatically wrap at 80 characters for Markdown
   "autocmd BufRead,BufNewFile *.md setlocal textwidth=80
-"
+
   "" Automatically wrap at 72 characters and spell check git commit messages
   "autocmd FileType gitcommit setlocal textwidth=72
   "autocmd FileType gitcommit setlocal spell
-"
+
   "" Allow stylesheets to autocomplete hyphenated words
   "autocmd FileType css,scss,sass setlocal iskeyword+=-
 "augroup END
-"
-"" Softtabs, 2 spaces
+
+" Softtabs, 2 spaces
 "set tabstop=2
 "set shiftwidth=2
 "set shiftround
 "set expandtab
-"
-"
-"" Color scheme
-"highlight NonText guibg=#060606
-"highlight Folded  guibg=#0A0A0A guifg=#9090D0
-"
-"" Numbers
-"set number
-"set numberwidth=5
-"
-"" Tab completion
-"" will insert tab at beginning of line,
-"" will use completion if not at beginning
+
+" Tab completion
+" will insert tab at beginning of line,
+" will use completion if not at beginning
 "set wildmode=list:longest,list:full
 "function! InsertTabWrapper()
     "let col = col('.') - 1
@@ -435,16 +367,14 @@ map <Leader>k <Plug>(easymotion-k)
 "endfunction
 "inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 "inoremap <S-Tab> <c-n>
-"
 
-"" Switch between the last two files
+" Switch between the last two files
 "nnoremap <leader><leader> <c-^>
-"
-"
-"" Run commands that require an interactive shell
+
+" Run commands that require an interactive shell
 "nnoremap <Leader>r :RunInInteractiveShell<space>
-"
+
 "" Set spellfile to location that is guaranteed to exist, can be symlinked to
 "" Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
 "set spellfile=$HOME/.vim-spell-en.utf-8.add
-"
+

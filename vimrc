@@ -44,6 +44,7 @@ let base16colorspace=256 " Access colors present in 256 colorspace
 set t_Co=256 " 256 color mode
 set background=dark
 colorscheme base16-tomorrow
+
 "highlight the status bar when in insert mode
 if version >= 700
   au InsertEnter * hi StatusLine ctermfg=235 ctermbg=2
@@ -61,10 +62,8 @@ autocmd BufWinLeave * call clearmatches()
 " Make it obvious where 80 characters is
 set textwidth=80
 
-
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
-
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -87,7 +86,7 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 set diffopt+=vertical
 
 "Make vim multiple cursors compatible with neocomplete
-" Called once right before you start selecting multiple cursors
+"Called once right before you start selecting multiple cursors
 function! Multiple_cursors_before()
   if exists(':NeoCompleteLock')==2
     exe 'NeoCompleteLock'
@@ -105,6 +104,7 @@ endfunction
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='tomorrow'
+
 " use silver searcher for ctrlp
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_match_window_reversed = 0
@@ -114,10 +114,8 @@ let g:ctrlp_match_window_bottom = 0
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
-
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
@@ -130,7 +128,6 @@ augroup END
 
 "NERDTree
 silent! nmap <C-e> :NERDTreeTabsToggle<CR>
-"let g:NERDTreeWinSize = 40
 
 "Easymotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -140,27 +137,14 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
-
 hi link EasyMotionTarget2First MatchParen
 hi link EasyMotionTarget2Second MatchParen
 
 " unmap ex mode: 'Type visual to go into Normal mode.'
 nnoremap Q <nop>
 
-
-
-
-
-
-
-
-
-
-
-"
 " map Silver Searcher
 map <leader>a :Ag!<space>
 "
@@ -183,8 +167,8 @@ map <leader>n :call RenameFile()<cr>
 autocmd BufRead,BufNewFile Appraisals set filetype=ruby
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 
-"" Enable spellchecking for Markdown
-"autocmd FileType markdown setlocal spell
+" Enable spellchecking for Markdown
+autocmd FileType markdown setlocal spell
 
 " Automatically wrap at 80 characters for Markdown
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
@@ -212,60 +196,37 @@ inoremap <S-Tab> <c-n>
 nnoremap <leader><leader> <c-^>
 
 "Neocomplete
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
+let g:neocomplete#enable_fuzzy_completion = 1
+let g:neocomplete_enable_fuzzy_completion_start_length = 2
+let g:neocomplete_enable_camel_case_completion = 0
 let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-
-" AutoComplPop like behavior.
-let g:neocomplete#enable_auto_select = 1
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+let g:neocomplete#enable_auto_delimiter = 1
+let g:neocomplete#max_list = 10
+let g:neocomplete#force_overwrite_completefunc = 1
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
+let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+        autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 "function! RunTests(filename)
   " Write the file and run tests for the given filename

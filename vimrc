@@ -58,67 +58,9 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-
-" NEOCOMPL config
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-" AutoComplPop like behavior.
-let g:neocomplete#enable_auto_select = 1
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-" END NEOCOMPL config
-
 " Make it obvious where 80 characters is
 set textwidth=80
-set colorcolumn=+1
+
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
@@ -227,31 +169,19 @@ map <leader>a :Ag!<space>
 "
 " clear the command line and search highlighting
 noremap <C-l> :nohlsearch<CR>
-"
-" multi-purpose tab key (auto-complete)
-"function! InsertTabWrapper()
-  "let col = col('.') - 1
-  "if !col || getline('.')[col - 1] !~ '\k'
-    "return "\<tab>"
-  "else
-    "return "\<c-p>"
-  "endif
-"endfunction
-"inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-"inoremap <s-tab> <c-n>
-"
+
 " rename current file, via Gary Bernhardt
-"function! RenameFile()
-  "let old_name = expand('%')
-  "let new_name = input('New file name: ', expand('%'))
-  "if new_name != '' && new_name != old_name
-    "exec ':saveas ' . new_name
-    "exec ':silent !rm ' . old_name
-    "redraw!
-  "endif
-"endfunction
-"map <leader>n :call RenameFile()<cr>
-"
+function! RenameFile()
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'))
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
+endfunction
+map <leader>n :call RenameFile()<cr>
+
 "function! RunTests(filename)
   " Write the file and run tests for the given filename
   ":w
@@ -305,12 +235,6 @@ noremap <C-l> :nohlsearch<CR>
 "map <leader>T :call RunNearestTest()<cr>
 
 "THOUGHTBOT EXTRA CONFIGS
-"" Use Vim settings, rather then Vi settings. This setting must be as early as
-"" possible, as it has side effects.
-"set backspace=2   " Backspace deletes like most programs in insert mode
-"set nobackup
-"set nowritebackup
-"set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
 "set history=50
 "set ruler         " show the cursor position all the time
 "set showcmd       " display incomplete commands
@@ -329,44 +253,34 @@ noremap <C-l> :nohlsearch<CR>
     "\   exe "normal g`\"" |
     "\ endif
 "
-  "" Set syntax highlighting for specific file types
-  "autocmd BufRead,BufNewFile Appraisals set filetype=ruby
-  "autocmd BufRead,BufNewFile *.md set filetype=markdown
+" Set syntax highlighting for specific file types
+autocmd BufRead,BufNewFile Appraisals set filetype=ruby
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 
-  "" Enable spellchecking for Markdown
-  "autocmd FileType markdown setlocal spell
+"" Enable spellchecking for Markdown
+"autocmd FileType markdown setlocal spell
 
-  "" Automatically wrap at 80 characters for Markdown
-  "autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+" Automatically wrap at 80 characters for Markdown
+autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
-  "" Automatically wrap at 72 characters and spell check git commit messages
-  "autocmd FileType gitcommit setlocal textwidth=72
-  "autocmd FileType gitcommit setlocal spell
-
-  "" Allow stylesheets to autocomplete hyphenated words
-  "autocmd FileType css,scss,sass setlocal iskeyword+=-
-"augroup END
-
-" Softtabs, 2 spaces
-"set tabstop=2
-"set shiftwidth=2
-"set shiftround
-"set expandtab
+" Automatically wrap at 72 characters and spell check git commit messages
+autocmd FileType gitcommit setlocal textwidth=72
+autocmd FileType gitcommit setlocal spell
 
 " Tab completion
-" will insert tab at beginning of line,
-" will use completion if not at beginning
-"set wildmode=list:longest,list:full
-"function! InsertTabWrapper()
-    "let col = col('.') - 1
-    "if !col || getline('.')[col - 1] !~ '\k'
-        "return "\<tab>"
-    "else
-        "return "\<c-p>"
-    "endif
-"endfunction
-"inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
-"inoremap <S-Tab> <c-n>
+"will insert tab at beginning of line,
+"will use completion if not at beginning
+set wildmode=list:longest,list:full
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <S-Tab> <c-n>
 
 " Switch between the last two files
 "nnoremap <leader><leader> <c-^>
@@ -377,4 +291,89 @@ noremap <C-l> :nohlsearch<CR>
 "" Set spellfile to location that is guaranteed to exist, can be symlinked to
 "" Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
 "set spellfile=$HOME/.vim-spell-en.utf-8.add
+
+"Neocomplete
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+
+" For cursor moving in insert mode(Not recommended)
+"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
+"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
+"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
+"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
+" Or set this.
+"let g:neocomplete#enable_cursor_hold_i = 1
+" Or set this.
+"let g:neocomplete#enable_insert_char_pre = 1
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 

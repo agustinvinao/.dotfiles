@@ -196,7 +196,6 @@ autocmd FileType gitcommit setlocal spell
 nnoremap <leader><leader> <c-^>
 
 "Neocomplete
-" Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_fuzzy_completion = 1
 let g:neocomplete_enable_fuzzy_completion_start_length = 2
@@ -212,7 +211,6 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
 endif
 let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
         autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
 
 
 

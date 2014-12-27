@@ -27,9 +27,10 @@ set nofoldenable                  " disable code folding
 set clipboard=unnamed             " use the system clipboard
 set wildmenu                      " enable bash style tab completion
 set wildmode=list:longest,full
+set numberwidth=1
 syntax on                         " show syntax highlighting
 filetype plugin indent on
-let mapleader=" "                 "Map Leader to space
+let mapleader=","                 "Map Leader to space
 
 "Disable swap/backup files
 set nobackup
@@ -101,14 +102,14 @@ function! Multiple_cursors_after()
 endfunction
 
 " Airline configuration
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_theme='tomorrow'
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline_powerline_fonts = 1
+"let g:airline_theme='tomorrow'
 
 " use silver searcher for ctrlp
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 1
+let g:ctrlp_match_window_bottom = 1 
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -212,8 +213,9 @@ endif
 let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
         autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-
-
+"vim indent guides
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
 
 
 

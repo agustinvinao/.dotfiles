@@ -24,7 +24,7 @@ COMPLETION_WAITING_DOTS="true"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(archlinux bower bundler common-aliases git gem node npm rails ruby sudo systemd tmux tmuxinator) #vi-mode chruby
+plugins=(git gem rails ruby) #vi-mode chruby
 
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$PATH

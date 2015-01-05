@@ -25,8 +25,7 @@ NeoBundle 'msanders/snipmate.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
-"NeoBundle 'honza/vim-snippets'
-"NeoBundle 'bling/vim-airline
+NeoBundle 'bling/vim-airline'
 NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
@@ -40,44 +39,10 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'thoughtbot/vim-rspec'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'mattn/emmet-vim'
-
-
-"SPF13and and repeated
-"NeoBundle 'vim-scripts/sessionman.vim'
-"NeoBundle 'vim-scripts/restore_view.vim'
-"NeoBundle 'mbbill/undotree'
-"NeoBundle 'godlygeek/tabular'
+NeoBundle 'godlygeek/tabular'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
-"NeoBundle 'amirh/HTML-AutoCloseTag'
-"NeoBundle 'hail2u/vim-css3-syntax'
-
-"thoughtbot
-"NeoBundle 'christoomey/vim-run-interactive'
-"NeoBundle 'pbrisbin/vim-mkdir'
-"NeoBundle 'slim-template/vim-slim'
-"NeoBundle 'tpope/vim-bundler'
-"NeoBundle 'tpope/vim-endwise'
-"NeoBundle 'tpope/vim-eunuch'
-"NeoBundle 'tpope/vim-repeat'
-"NeoBundle 'vim-scripts/ctags.vim'
-"NeoBundle 'vim-scripts/matchit.zip'
-"NeoBundle 'vim-scripts/tComment'
-
-"chrishunt
-"NeoBundle 'colors-base16'
-"NeoBundle 'dash'
-"NeoBundle 'funcoo'
-"NeoBundle 'html5-syntax'
-"NeoBundle 'puppet-syntax-vim'
-"NeoBundle 'tabular'
-"NeoBundle 'vim-abolish'
-"NeoBundle 'vim-clojure-static'
-"NeoBundle 'vim-commentary'
-"NeoBundle 'vim-liquid'
-"NeoBundle 'vim-rbenv'
-"NeoBundle 'vim-unimpaired'
-"NeoBundle 'vim-vividchalk'
+NeoBundle 'slim-template/vim-slim'
 
 " Required:
 call neobundle#end()

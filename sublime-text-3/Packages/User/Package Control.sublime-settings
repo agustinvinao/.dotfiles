@@ -1,4 +1,13 @@
 {
+	"in_process_packages":
+	[
+	],
+	"installed_dependencies":
+	[
+		"0_package_control_loader",
+		"bz2",
+		"ssl-linux"
+	],
 	"installed_packages":
 	[
 		"1337 Color Scheme",
@@ -25,6 +34,7 @@
 		"LoremIpsum",
 		"Markdown Preview",
 		"Open URL",
+		"Package Control",
 		"Rails Migrations List",
 		"Ruby Debugger",
 		"Ruby on Rails snippets",

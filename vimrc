@@ -19,7 +19,6 @@ set ignorecase
 set mouse=a                       " enable mouse support
 set ttimeoutlen=100               " decrease timeout for faster insert with 'O'
 set vb                            " enable visual bell (disable audio bell)
-set ruler                         " show row and column in footer
 set scrolloff=2                   " minimum lines above/below cursor
 set laststatus=2                  " always show status bar
 set list listchars=tab:»·,trail:· " show extra space characters
@@ -36,9 +35,6 @@ let mapleader=","                 "Map Leader to space
 set nobackup
 set nowritebackup
 set noswapfile
-
-" put git status, column/row number, total lines, and percentage in status
-set statusline=%F%m%r%h%w\ %{fugitive#statusline()}\ [%l,%c]\ [%L,%p%%]
 
 " set dark background and color scheme
 let base16colorspace=256 " Access colors present in 256 colorspace
@@ -79,6 +75,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+"vim indent guides
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
@@ -104,7 +104,7 @@ endfunction
 " Airline configuration
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='tomorrow'
+let g:airline_theme='wombat'
 
 " use silver searcher for ctrlp
 let g:ctrlp_working_path_mode = 0
@@ -198,8 +198,5 @@ endif
 let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
         autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-"vim indent guides
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
 
 

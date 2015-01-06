@@ -38,7 +38,7 @@ alias fixit='sudo rm -f /var/lib/pacman/db.lck && sudo pacman-mirrors -g && sudo
 alias $EDITOR='vim'
 alias edit=$EDITOR
 alias NANO=$EDITOR
-alias tmux='alias tmux="TERM=screen-256color-bce tmux"
+alias tmux="TERM=screen-256color-bce tmux"
 SDL_VIDEO_FULLSCREEN_HEAD=0
 
 # prompt
@@ -50,3 +50,4 @@ PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\ \[\e[1;32m\]\$ \[\e[m\]\[\e[m\]\[\e[
 if [ -f /etc/bash_completion ]; then
         . /etc/bash_completion
 fi
+

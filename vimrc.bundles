@@ -25,6 +25,7 @@ NeoBundle 'msanders/snipmate.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
+"NeoBundle 'honza/vim-snippets'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'tpope/vim-fugitive'
@@ -43,6 +44,7 @@ NeoBundle 'godlygeek/tabular'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'slim-template/vim-slim'
+NeoBundle 'ctags.vim'
 
 " Required:
 call neobundle#end()

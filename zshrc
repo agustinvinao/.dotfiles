@@ -46,14 +46,11 @@ fi
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 alias subl='subl3'
+alias tmux="TERM=screen-256color-bce tmux"
 
 zstyle ':omz:module:pacman' frontend 'yaourt'
 
-zstyle ':omz:module:tmux' auto-start 'yes'
-## TMUX
-# Start tmux on every shell login
-#[[ $- != *i* ]] && return
-#[[ -z "$TMUX" ]] && exec tmux
+if [ "$TMUX" = "" ]; then tmux; fi
 
 # Base16 Shell
 # git clone git@github.com:chriskempson/base16-shell.git ~/.config/base16-shell

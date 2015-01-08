@@ -21,7 +21,9 @@ NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'msanders/snipmate.vim'
+NeoBundle 'tomtom/tlib_vim'              "required by snipmate
+NeoBundle 'MarcWeber/vim-addon-mw-utils' "required by snipmate
+NeoBundle 'garbas/vim-snipmate'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -45,6 +47,7 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'ctags.vim'
+NeoBundle 'thoughtbot/vim-rspec'
 
 " Required:
 call neobundle#end()

@@ -1,9 +1,0 @@
-{
-  "tab_size": 2,
-	"extensions":
-	[
-		"yml.dist",
-		".gemrc",
-		"yml"
-	]
-}

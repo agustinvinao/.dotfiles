@@ -20,34 +20,41 @@ NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'chriskempson/base16-vim'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'tomtom/tlib_vim'              "required by snipmate
-NeoBundle 'MarcWeber/vim-addon-mw-utils' "required by snipmate
-NeoBundle 'garbas/vim-snipmate'
 NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'honza/vim-snippets'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'mattn/gist-vim'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'gorodinskiy/vim-coloresque'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'ctags.vim'
+
+"Snippets
+NeoBundle 'garbas/vim-snipmate'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'tomtom/tlib_vim'              "required by snipmate
+NeoBundle 'MarcWeber/vim-addon-mw-utils' "required by snipmate
+
+"Ruby
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'thoughtbot/vim-rspec'
 NeoBundle 'tpope/vim-rails'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'godlygeek/tabular'
+
+"Javascript"
 NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'othree/javascript-libraries-syntax.vim'
+NeoBundle 'dsawardekar/ember.vim'
+
+"Mansion Specific
 NeoBundle 'slim-template/vim-slim'
-NeoBundle 'ctags.vim'
-NeoBundle 'thoughtbot/vim-rspec'
+NeoBundle 'kchmck/vim-coffee-script'
 
 " Required:
 call neobundle#end()

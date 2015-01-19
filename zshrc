@@ -35,6 +35,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 export LANG="es_AR"
 export LANGUAGE="es_AR"
+export TERM=gnome-256color
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then

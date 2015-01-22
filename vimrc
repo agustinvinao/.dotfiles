@@ -52,9 +52,6 @@ autocmd BufWinLeave * call clearmatches()
 " Make it obvious where 80 characters is
 set textwidth=80
 
-" Switch between the last two files
-nnoremap <leader><leader> <c-^>
-
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
@@ -100,19 +97,19 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='wombat'
 
 " use silver searcher for ctrlp
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_match_window_reversed = 1
-let g:ctrlp_match_window_bottom = 1 
+"let g:ctrlp_working_path_mode = 0
+"let g:ctrlp_match_window_reversed = 1
+"let g:ctrlp_match_window_bottom = 1 
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
+"if executable('ag')
   " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+  "set grepprg=ag\ --nogroup\ --nocolor
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
+  "let g:ctrlp_use_caching = 0
+"endif
 
 "watch for changes in .vimrc and automatically reload the config.
 augroup myvimrc
@@ -120,8 +117,34 @@ augroup myvimrc
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
 
-"NERDTree
-silent! nmap <C-e> :NERDTreeTabsToggle<CR>
+"VimFiler
+let g:vimfiler_as_default_explorer = 1
+silent! nmap <C-e> :VimFilerExplorer -toggle<CR>
+
+" Unite
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <C-p> :Unite file_rec/async<cr>
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+nnoremap <space>/ :Unite grep:.<cr>
+let g:unite_source_history_yank_enable = 1
+nnoremap <space>y :Unite history/yank<cr>
+nnoremap <space>s :Unite -quick-match buffer<cr>
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
 
 "Easymotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -140,7 +163,7 @@ hi link EasyMotionTarget2Second MatchParen
 nnoremap Q <nop>
 
 " map Silver Searcher
-map <leader>a :Ag!<space>
+"map <leader>a :Ag!<space>
 
 " clear the command line and search highlighting
 noremap <C-l> :nohlsearch<CR>

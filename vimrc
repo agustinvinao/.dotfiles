@@ -9,13 +9,13 @@ set shiftwidth=2
 set expandtab                     " use spaces, not tab characters
 set nocompatible                  " don't need to be compatible with old vim
 set number                        " show line numbers
+set numberwidth=1                 " line number width
 set showmatch                     " show bracket matches
 set ignorecase                    " ignore case in search
 set hlsearch                      " highlight all search matches
 set cursorline                    " highlight current line
 set smartcase                     " pay attention to case when caps are used
 set incsearch                     " show search results as I ttytype
-set ignorecase
 set mouse=a                       " enable mouse support
 set ttimeoutlen=100               " decrease timeout for faster insert with 'O'
 set vb                            " enable visual bell (disable audio bell)
@@ -26,10 +26,9 @@ set nofoldenable                  " disable code folding
 set clipboard=unnamedplus         " use the system clipboard
 set wildmenu                      " enable bash style tab completion
 set wildmode=list:longest,full
-set numberwidth=1
 syntax on                         " show syntax highlighting
 filetype plugin indent on
-let mapleader=","                 "Map Leader to space
+let mapleader=","                 "Map Leader to comma
 
 "Disable swap/backup files
 set nobackup
@@ -37,16 +36,10 @@ set nowritebackup
 set noswapfile
 
 " set dark background and color scheme
-let base16colorspace=256 " Access colors present in 256 colorspace
-set t_Co=256 " 256 color mode
+let base16colorspace=256          " Access colors present in 256 colorspace
+set t_Co=256                      " 256 color mode
 set background=dark
 colorscheme base16-tomorrow
-
-"highlight the status bar when in insert mode
-if version >= 700
-  au InsertEnter * hi StatusLine ctermfg=235 ctermbg=2
-  au InsertLeave * hi StatusLine ctermbg=240 ctermfg=12
-endif
 
 " highlight trailing spaces in annoying red
 highlight ExtraWhitespace ctermbg=1 guibg=red
@@ -148,7 +141,7 @@ nnoremap Q <nop>
 
 " map Silver Searcher
 map <leader>a :Ag!<space>
-"
+
 " clear the command line and search highlighting
 noremap <C-l> :nohlsearch<CR>
 
@@ -178,9 +171,6 @@ autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 autocmd FileType gitcommit setlocal textwidth=72
 autocmd FileType gitcommit setlocal spell
 
-" Switch between the last two files
-nnoremap <leader><leader> <c-^>
-
 "Neocomplete
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_fuzzy_completion = 1
@@ -197,7 +187,6 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
 endif
 let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
         autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)

@@ -29,7 +29,7 @@ set wildmode=list:longest,full
 set numberwidth=1
 syntax on                         " show syntax highlighting
 filetype plugin indent on
-let mapleader=","                 "Map Leader to space
+let mapleader = "\<Space>" "Map Leader to space
 
 "Disable swap/backup files
 set nobackup
@@ -41,6 +41,17 @@ let base16colorspace=256 " Access colors present in 256 colorspace
 set t_Co=256 " 256 color mode
 set background=dark
 colorscheme base16-tomorrow
+
+" Type <Space>w to save file
+nnoremap <Leader>w :w<CR>
+
+"Copy & paste to system clipboard with
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P""""""
 
 "highlight the status bar when in insert mode
 if version >= 700
@@ -106,8 +117,9 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='wombat'
 
+"CtrlP
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip "Exlude files or directories
 " use silver searcher for ctrlp
-let g:ctrlp_working_path_mode = 0
 let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_match_window_bottom = 1 
 
@@ -119,6 +131,12 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
+else
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co
+    --exclude-standard', 'find %s -type f']
+  let g:ctrlp_prompt_mappings = {
+     \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+     \ }
 endif
 
 "watch for changes in .vimrc and automatically reload the config.
@@ -128,7 +146,15 @@ augroup myvimrc
 augroup END
 
 "NERDTree
-silent! nmap <C-e> :NERDTreeTabsToggle<CR>
+" Mirror tree position for every buffer
+autocmd BufEnter * NERDTreeMirror
+" Set current dir to vim cwd
+set autochdir
+let NERDTreeChDirMode=2
+" Ctrl+d to toggle NerdTree
+nmap <silent> <C-D> :NERDTreeToggle<CR> 
+" Close nerdtree when it's the only buffer left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "Easymotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings

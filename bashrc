@@ -22,7 +22,7 @@ export JAVA_FONTS=/usr/share/fonts/TTF
 export EDITOR='vim'
 #export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 #export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-export GMAIL_USERNAME='smarquez@devspark.com'
+export GMAIL_USERNAME=''
 export TERM=screen-256color-bce
 
 alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'

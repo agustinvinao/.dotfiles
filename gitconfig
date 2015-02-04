@@ -1,0 +1,17 @@
+[user]
+  name = Sergio D. Marquez
+  email = marquez.sergio.d@gmail.com
+[core]
+  autosetuprebase = true
+  editor = vim
+  excludesfile = ~/.gitignore_global
+[color]
+  ui = auto
+[fetch]
+  prune = true
+[merge]
+  ff = only
+[commit]
+  template = ~/.gitmessage
+[push]
+	default = simple

@@ -17,7 +17,7 @@ COMPLETION_WAITING_DOTS="true"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="dd/mm/yyyy"
 # Which plugins would you like to load?
-plugins=(git vi-mode common_aliases rvm tmux battery docker) #rails
+plugins=(git vi-mode common_aliases rvm battery docker) #rails
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # You may need to manually set your language environment
@@ -38,7 +38,7 @@ function __current_branch_action {
 }
 
 alias subl='subl3'
-#alias tmux="TERM=screen-256color-bce tmux"
+alias tmux="TERM=screen-256color-bce tmux"
 alias be="bundle exec"
 alias rake="bundle exec rake"
 
@@ -55,3 +55,8 @@ function cd() {
 }
 export cd
 alias cwd='cd "$(cat ~/.cwd)"'
+
+# Start tmux automatically
+case $- in *i*)
+  if [ -z "$TMUX" ]; then exec tmux; fi;;
+esac

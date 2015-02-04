@@ -38,12 +38,15 @@ set noswapfile
 
 " set dark background and color scheme
 let base16colorspace=256 " Access colors present in 256 colorspace
-set t_Co=256 " 256 color mode
 set background=dark
 colorscheme base16-tomorrow
 
 " leader is <space>
-let mapleader=" "
+nnoremap <SPACE> <Nop>
+let mapleader = "\<Space>"
+
+" Type <Space>w to save file   +" leader is <space>
+nnoremap <Leader>w :w<CR>
 
 " disable arrow keys
 map <up> <nop>
@@ -97,10 +100,6 @@ set splitright
 "vim indent guides
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
-
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 
 " Always use vertical diffs
 set diffopt+=vertical
@@ -241,8 +240,12 @@ endif
 """""""""""""""""""""""
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-"let g:airline_theme='wombat'
-
+let g:airline_theme='base16'
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+let g:airline_symbols.space = "\ua0"
+set timeoutlen=50
 "CtrlP
 """"""
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip "Exlude files or directories
@@ -250,9 +253,8 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip "Exlude files or directories
 let g:ctrlp_match_window_reversed = 0
 " more results
 let g:ctrlp_max_height = 20
-" use the cwd as the path for ctrl-p (default is to use the nearest ancestor
-" path that contains a .git directory)
-let g:ctrlp_working_path_mode = 'a'
+" use the cwd as the path
+" let g:ctrlp_working_path_modd = 'a'
 " view most recently used files
 map <Leader><Leader> :CtrlPMRU<CR>
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
@@ -280,13 +282,22 @@ augroup END
 """""""""
 " Mirror tree position for every buffer
 autocmd BufEnter * NERDTreeMirror
-" Set current dir to vim cwd
-set autochdir
-let NERDTreeChDirMode=2
 " Ctrl+d to toggle NerdTree
 nmap <silent> <C-D> :NERDTreeToggle<CR>
 " Close nerdtree when it's the only buffer left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+"Syntastic
+"""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 
 "Easymotion
 """""""""""
@@ -301,32 +312,3 @@ hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
 hi link EasyMotionTarget2First MatchParen
 hi link EasyMotionTarget2Second MatchParen
-
-" nerd commenter
-"""""""""""""""""""""""""""""""""""""""""""""""
-" toggle comments
-map <Leader>/ <plug>NERDCommenterToggle
-
-"Change cursor shape and colors (needs testing)
-if &term =~ "xterm\\|rxvt"
-  " use an orange cursor in insert mode
-  let &t_SI = "\<Esc>]12;orange\x7"
-  " use a red cursor otherwise
-  let &t_EI = "\<Esc>]12;red\x7"
-  silent !echo -ne "\033]12;red\007"
-  " reset cursor when vim exits
-  autocmd VimLeave * silent !echo -ne "\033]112\007"
-  " use \003]12;gray\007 for gnome-terminal
-endif
-
-if &term =~ '^xterm'
-  " solid underscore
-  let &t_SI .= "\<Esc>[4 q"
-  " solid block
-  let &t_EI .= "\<Esc>[2 q"
-  " 1 or 0 -> blinking block
-  " 3 -> blinking underscore
-  " Recent versions of xterm (282 or above) also support
-  " 5 -> blinking vertical bar
-  " 6 -> solid vertical bar
-endif

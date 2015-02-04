@@ -17,15 +17,13 @@ COMPLETION_WAITING_DOTS="true"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="dd/mm/yyyy"
 # Which plugins would you like to load?
-plugins=(git vi-mode common_aliases rvm battery docker) #rails
+plugins=(git vi-mode common_aliases rvm battery docker tmux) #rails
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # You may need to manually set your language environment
-export LANG="es_AR"
-export LANGUAGE="es_AR"
+#export LANG="es_AR"
+#export LANGUAGE="es_AR"
 export TERM=gnome-256color
-
-#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
@@ -47,14 +45,6 @@ alias rake="bundle exec rake"
 BASE16_SCHEME="tomorrow"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
-
-# Function to switch and save the current path
-function cd() {
-  builtin cd "$@";
-  echo "$PWD" > ~/.cwd;
-}
-export cd
-alias cwd='cd "$(cat ~/.cwd)"'
 
 # Start tmux automatically
 case $- in *i*)

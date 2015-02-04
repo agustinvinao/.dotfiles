@@ -1,8 +1,6 @@
 # Path to your oh-my-zsh installation.
-ZSH=/usr/share/oh-my-zsh/
-
-source /usr/share/chruby/chruby.sh
-source /usr/share/chruby/auto.sh
+ZSH=/usr/share/oh-my-zsh
+source /etc/profile.d/vte.sh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -58,3 +56,5 @@ if [ "$TMUX" = "" ]; then tmux; fi
 BASE16_SCHEME="tomorrow"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

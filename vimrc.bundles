@@ -54,10 +54,6 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'dsawardekar/ember.vim'
 
-"Mansion Specific
-NeoBundle 'slim-template/vim-slim'
-NeoBundle 'kchmck/vim-coffee-script'
-
 " Required:
 call neobundle#end()
 

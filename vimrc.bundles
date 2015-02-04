@@ -36,13 +36,8 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/neocomplete.vim'
-
-"Snippets
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'garbas/vim-snipmate'
-NeoBundle 'tomtom/tlib_vim'              "required by snipmate
-NeoBundle 'MarcWeber/vim-addon-mw-utils' "required by snipmate
 
 "Ruby
 NeoBundle 'vim-ruby/vim-ruby'

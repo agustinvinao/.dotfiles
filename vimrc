@@ -29,7 +29,6 @@ set wildmode=list:longest,full
 set numberwidth=1
 syntax on                         " show syntax highlighting
 filetype plugin indent on
-let mapleader = "\<Space>" "Map Leader to space
 
 "Disable swap/backup files
 set nobackup
@@ -39,7 +38,7 @@ set noswapfile
 " set dark background and color scheme
 let base16colorspace=256 " Access colors present in 256 colorspace
 set background=dark
-colorscheme base16-tomorrow
+colorscheme base16-eighties
 
 " leader is <space>
 nnoremap <SPACE> <Nop>
@@ -59,10 +58,10 @@ imap <left> <nop>
 imap <right> <nop>
 
 " Quicker window movement
-map <leader>h <C-w>h
-map <leader>j <C-w>j
-map <leader>k <C-w>k
-map <leader>l <C-w>l
+"map <leader>h <C-w>h
+"map <leader>j <C-w>j
+"map <leader>k <C-w>k
+"map <leader>l <C-w>l
 
 " easy splitting
 map <leader>s :split<cr>
@@ -140,7 +139,7 @@ autocmd FileType gitcommit setlocal textwidth=72
 autocmd FileType gitcommit setlocal spell
 
 " Switch between the last two files
-nnoremap <leader><leader> <c-^>:e
+" nnoremap <leader><leader> <c-^>:e
 
 "Neocomplete
 """"""""""""
@@ -236,16 +235,108 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-" Airline configuration
+" Lightline configuration
 """""""""""""""""""""""
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_theme='base16'
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'filename' ],
+      \             ['ctrlpmark'] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'MyFugitive',
+      \   'readonly': 'MyReadonly',
+      \   'modified': 'MyModified',
+      \   'filename': 'MyFilename',
+      \   'mode': 'MyMode',
+      \   'ctrlpmark': 'CtrlPMark'
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag',
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error',
+      \ }
+      \ }
+
+function! MyModified()
+  if &filetype == "help"
+    return ""
+  elseif &modified
+    return "+"
+  elseif &modifiable
+    return ""
+  else
+    return ""
   endif
-let g:airline_symbols.space = "\ua0"
+endfunction
+
+function! MyReadonly()
+  if &filetype == "help"
+    return ""
+  elseif &readonly
+    return "⭤"
+  else
+    return ""
+  endif
+endfunction
+
+function! MyFugitive()
+  if exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? '⭠ '._ : ''
+  endif
+  return ''
+endfunction
+
+function! MyMode()
+  let fname = expand('%:t')
+  return fname == 'ControlP' ? 'CtrlP' :
+        \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+function! CtrlPMark()
+  if expand('%:t') =~ 'ControlP'
+    call lightline#link('iR'[g:lightline.ctrlp_regex])
+    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
+          \ , g:lightline.ctrlp_next], 0)
+  else
+    return ''
+  endif
+endfunction
+
+let g:ctrlp_status_func = {
+  \ 'main': 'CtrlPStatusFunc_1',
+  \ 'prog': 'CtrlPStatusFunc_2',
+  \ }
+
+function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+  let g:lightline.ctrlp_regex = a:regex
+  let g:lightline.ctrlp_prev = a:prev
+  let g:lightline.ctrlp_item = a:item
+  let g:lightline.ctrlp_next = a:next
+  return lightline#statusline(0)
+endfunction
+
+function! CtrlPStatusFunc_2(str)
+  return lightline#statusline(0)
+endfunction
+
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost *.c,*.cpp call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction
+
+let g:tmuxline_powerline_separators = 0
+set noshowmode
 set timeoutlen=50
+
 "CtrlP
 """"""
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip "Exlude files or directories
@@ -311,4 +402,4 @@ map <Leader>k <Plug>(easymotion-k)
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
 hi link EasyMotionTarget2First MatchParen
-hi link EasyMotionTarget2Second MatchParen
+hi link EasyMotionTarget2Second MatchParent

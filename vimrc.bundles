@@ -38,7 +38,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
-
+NeoBundle 'kchmck/vim-coffee-script'
 "Ruby
 "NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-rails'

@@ -1,4 +1,4 @@
-" .vimrc
+" VIM config file
 
 source ~/.vimrc.bundles
 
@@ -10,13 +10,10 @@ set expandtab                     " use spaces, not tab characters
 set nocompatible                  " don't need to be compatible with old vim
 set number                        " show line numbers
 set showmatch                     " show bracket matches
-set ignorecase                    " ignore case in search
-set hlsearch                      " highlight all search matches
 set cursorline                    " highlight current line
-set smartcase                     " pay attention to case when caps are used
-set incsearch                     " show search results as I ttytype
-set ignorecase
+set hlsearch incsearch ignorecase smartcase               " search
 set mouse=a                       " enable mouse support
+set mousemodel=popup             " right-click pops up context menu
 set ttimeoutlen=100               " decrease timeout for faster insert with 'O'
 set vb                            " enable visual bell (disable audio bell)
 set scrolloff=2                   " minimum lines above/below cursor
@@ -38,58 +35,16 @@ set nowritebackup
 set noswapfile
 
 " set dark background and color scheme
-let base16colorspace=256 " Access colors present in 256 colorspace
+let colorspace=256 " Access colors present in 256 colorspace
 set background=dark
-colorscheme base16-eighties
-
-" leader is <space>
-nnoremap <SPACE> <Nop>
-let mapleader = "\<Space>"
-
-" Type <Space>w to save file   +" leader is <space>
-nnoremap <Leader>w :w<CR>
-
-" disable arrow keys
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
-
-" Quicker window movement
-"map <leader>h <C-w>h
-"map <leader>j <C-w>j
-"map <leader>k <C-w>k
-"map <leader>l <C-w>l
-
-" easy splitting
-map <leader>s :split<cr>
-map <leader>v :vsplit<cr>
-
-"Copy & paste to system clipboard with
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P""""""
-
-" highlight trailing spaces in annoying red
-highlight ExtraWhitespace ctermbg=1 guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
-
-" remove highlighted term
-nnoremap <silent> <Leader>* :nohlsearch<CR>
-
+colorscheme Tomorrow-Night-Eighties
+:set t_ut=
 " Make it obvious where 80 characters is
 set textwidth=80
+if (exists('+colorcolumn'))
+  execute "set colorcolumn=" . join(range(81,335), ',')
+  highlight ColorColumn guibg=Black 
+endif
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -105,27 +60,6 @@ let g:indent_guides_guide_size = 1
 " Always use vertical diffs
 set diffopt+=vertical
 
-" unmap ex mode: 'Type visual to go into Normal mode.'
-nnoremap Q <nop>
-
-" map Silver Searcher
-map <leader>a :Ag!<space>
-
-" clear the command line and search highlighting
-noremap <C-l> :nohlsearch<CR>
-
-" rename current file, via Gary Bernhardt
-function! RenameFile()
-  let old_name = expand('%')
-  let new_name = input('New file name: ', expand('%'))
-  if new_name != '' && new_name != old_name
-    exec ':saveas ' . new_name
-    exec ':silent !rm ' . old_name
-    redraw!
-  endif
-endfunction
-map <leader>n :call RenameFile()<cr>
-
 " Set syntax highlighting for specific file types
 autocmd BufRead,BufNewFile Appraisals set filetype=ruby
 autocmd BufRead,BufNewFile *.md set filetype=markdown
@@ -140,8 +74,85 @@ autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 autocmd FileType gitcommit setlocal textwidth=72
 autocmd FileType gitcommit setlocal spell
 
-" Switch between the last two files
-" nnoremap <leader><leader> <c-^>:e
+"watch for changes in .vimrc and automatically reload the config.
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
+
+" Key Mapings
+"""""""""""""
+
+" leader is <space>
+nnoremap <SPACE> <Nop>
+let mapleader = "\<Space>"
+" Type <Space>w to save file   +" leader is <space>
+nnoremap <Leader>w :w<CR>
+" disable arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+" Quicker window movement
+map <leader>h <C-w>h
+map <leader>j <C-w>j
+map <leader>k <C-w>k
+map <leader>l <C-w>l
+" easy splitting
+map <leader>s :split<cr>
+map <leader>v :vsplit<cr>
+"Copy & paste to system clipboard with
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P""""""
+" view most recently used files
+" map <Leader> o :CtrlPMRU<CR>
+" unmap ex mode: 'Type visual to go into Normal mode.'
+nnoremap Q <nop>
+" map Silver Searcher
+map <leader>a :Ag!<space>
+" clear the command line and search highlighting
+noremap <C-l> :nohlsearch<CR>
+" Neocomplete mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+" Neosnippet mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+" Ctrl+d to toggle NerdTree
+nmap <silent> <C-D> :NERDTreeToggle<CR>
+" Easymotion mappings
+"nmap s <Plug>(easymotion-s)
+"map <Leader>j <Plug>(easymotion-j)
+"map <Leader>k <Plug>(easymotion-k)
+
 
 "Neocomplete
 """"""""""""
@@ -165,26 +176,11 @@ if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
   return neocomplete#close_popup() . "\<CR>"
   " For no inserting <CR> key.
   "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
 " AutoComplPop like behavior.
 let g:neocomplete#enable_auto_select = 1
 " Enable omni completion.
@@ -219,29 +215,16 @@ let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 
 " Neosnippet
 """"""""""""
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
 " For snippet_complete marker.
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-" Lightline configuration
+" Lightline & Tmuxline configuration
 """""""""""""""""""""""
 let g:tmuxline_powerline_separators = 0
 let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
+      \ 'colorscheme': 'Tomorrow_Night_Eighties',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
       \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
@@ -347,7 +330,6 @@ function! s:syntastic()
   call lightline#update()
 endfunction
 
-
 "CtrlP
 """"""
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip "Exlude files or directories
@@ -355,10 +337,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip "Exlude files or directories
 let g:ctrlp_match_window_reversed = 0
 " more results
 let g:ctrlp_max_height = 20
-" use the cwd as the path
-" let g:ctrlp_working_path_modd = 'a'
-" view most recently used files
-map <Leader><Leader> :CtrlPMRU<CR>
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   " Use Ag over Grep
@@ -374,18 +352,11 @@ else
      \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
      \ }
 endif
-"watch for changes in .vimrc and automatically reload the config.
-augroup myvimrc
-    au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-augroup END
 
 "NERDTree
 """""""""
 " Mirror tree position for every buffer
 autocmd BufEnter * NERDTreeMirror
-" Ctrl+d to toggle NerdTree
-nmap <silent> <C-D> :NERDTreeToggle<CR>
 " Close nerdtree when it's the only buffer left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
@@ -400,16 +371,12 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+let g:syntastic_ruby_checkers = ['rubocop']
 
 "Easymotion
 """""""""""
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-nmap s <Plug>(easymotion-s)
 " Turn on case sensitive feature
 let g:EasyMotion_smartcase = 1
-" JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
 hi link EasyMotionTarget2First MatchParen

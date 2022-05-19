@@ -3,3 +3,6 @@
 export GOPATH=/usr/local/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
+
+# yarn
+export PATH="$PATH:$(yarn global bin)"

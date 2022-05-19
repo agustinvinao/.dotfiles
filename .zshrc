@@ -7,6 +7,9 @@ source ~/.zsh_alias
 # load vars
 source ~/.zsh_vars
 
+# load functions
+source ~/.zsh_functions
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/tlon/.zshrc'
 

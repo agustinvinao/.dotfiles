@@ -12,3 +12,9 @@ alias cat='batcat'
 
 # kubectl
 alias k='kubectl'
+
+# docker
+alias docker='podman'
+
+# solc
+alias solc='snap run solc'

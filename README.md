@@ -31,21 +31,28 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 | starship | The minimal, blazing-fast, and infinitely customizable prompt for any shell! |
 | tmux | terminal multiplexer for Unix-like operating systems |
 | zsh | roaming, supports intermittent connectivity, and provides intelligent local echo and line editing of user keystrokes |
+| exuberant-ctags | Generate tag files for source code
+| nodejs | node |
+| yarn | node package manager |
 |------|---------------------------------------|
 
 # apt install packages
 ```
 sudo apt install \
-  software-properties-common \
-	tmux \
-	neovim \
+	bat \
 	podman \
 	git \
 	exa \
-	bat \
+  exuberant-ctags \
 	mosh \
-	zsh \
-  python3-pip
+	neovim \
+  nodejs \
+  python3-pip \
+  nodejs \
+  npm \
+  software-properties-common \
+	tmux \
+	zsh
 
 sudo apt install --yes -- python3-venv
 
@@ -147,4 +154,129 @@ git clone https://github.com/jesseduffield/lazygit.git
 cd lazygit
 go install
 ```
+
+#### nodejs 18.x
+
+```
+curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
+```
+
+#### yarn
+
+```
+curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null                                    
+echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list              
+sudo apt-get update && sudo apt-get install yarn
+
+## Run `sudo apt-get install -y nodejs` to install Node.js 16.x and npm
+## You may also need development tools to build native addons:
+     sudo apt-get install gcc g++ make
+## To install the Yarn package manager, run:
+     curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
+     echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+     sudo apt-get update && sudo apt-get install yarn
+
+```
+
+##### add yarn to the path
+
+```
+export PATH="$PATH:/opt/yarn-[version]/bin"
+```
+
+### vim - coc
+
+#### get vim-plug home folder
+
+```vim
+let plug_home
+
+```
+
+#### install dependencies
+
+```bash
+cd vim-plug home
+cd coc.vim
+yarn install
+yarn build
+```
+
+#### language autocomplete moduels
+
+##### pyton
+
+```vim
+:CocInstall coc-python
+```
+
+```bash
+sudo apt install python3-pip
+pip3 install jedi
+```
+
+##### bash
+
+```vim
+:CoCInstall coc-sh
+```
+
+##### html 
+
+```vim
+:CoCInstall coc-html
+```
+
+##### javascript/typescript 
+
+```vim
+:CoCInstall coc-tsserver
+```
+
+##### json 
+
+```vim
+:CoCInstall coc-json
+```
+
+##### markdown
+
+```vim
+:CoCInstall coc-markdownlint
+```
+
+##### ruby
+
+```vim
+:CoCInstall coc-solargraph
+```
+
+##### solidity
+
+```vim
+:CoCinstall solidiy
+```
+
+##### css
+
+```vim
+:CoCInstall coc-css
+```
+
+##### dockerfile
+```vim
+"languageserver": {
+  "dockerfile": {
+    "command": "docker-langserver",
+    "filetypes": ["dockerfile"],
+    "args": ["--stdio"]
+  }
+}
+```
+
+##### markmap
+
+```vim
+:CoCInstall markmap
+``` 
 

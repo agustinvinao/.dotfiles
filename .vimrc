@@ -1,7 +1,7 @@
 call plug#begin()
 
 Plug 'sonph/onehalf', { 'rtp': 'vim' }                                                " themes
-Plug 'preservim/nerdcommenter'                                                        " commenter
+" Plug 'preservim/nerdcommenter'                                                        " commenter
 Plug 'ryanoasis/vim-devicons'                                                         " icons and symbols
 Plug 'vim-airline/vim-airline'                                                        " Status bar
 Plug 'preservim/nerdtree'                                                             " file tree navifation
@@ -14,6 +14,7 @@ Plug 'jiangmiao/auto-pairs'                                                     
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' } " prettier support
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }               " markdown preview
 Plug 'tomlion/vim-solidity'                                                           " Syntax files for solidity 
+Plug 'tpope/vim-commentary'                                                           " Code commenter 
 
 " not in use
 " Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}

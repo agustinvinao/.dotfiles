@@ -91,9 +91,17 @@ function! AirlineInit()
   :let g:airline_statusline_ontop = 1
 endfunction
 
+" Prettier
+" autoformat on save
+function! PrettierInit()
+ let g:prettier#autoformat = 1
+ let g:prettier#autoformat_require_pragma = 0
+endfunction
 
 autocmd VimEnter * call AirlineInit()
 autocmd VimEnter * call LookAndFeelInit()
 autocmd VimEnter * call TreeNavigationInit()
 autocmd VimEnter * call TagBarInit()
+autocmd VimEnter * call PrettierInit()
+
 

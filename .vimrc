@@ -9,7 +9,7 @@ Plug 'ap/vim-css-color'                                                         
 Plug 'rafi/awesome-vim-colorschemes'                                                  " Retro Scheme
 Plug 'tc50cal/vim-terminal'                                                           " Vim Terminal
 Plug 'preservim/tagbar'                                                               " Tagbar for code navigation
-Plug 'neoclide/coc.nvim'                                                              " code autompletion
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}              " code autompletion
 Plug 'jiangmiao/auto-pairs'                                                           " autoclose pairs
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' } " prettier support
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }               " markdown preview

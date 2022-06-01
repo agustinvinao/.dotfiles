@@ -18,3 +18,7 @@ alias docker='podman'
 
 # solc
 alias solc='snap run solc'
+
+# osx
+## batcat
+alias cat='bat'

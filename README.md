@@ -5,6 +5,10 @@
 ```
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
+Installing plugins (required the first time):
+1. Add new plugin to ~/.tmux.conf with `set -g @plugin '...'`
+2. Press prefix + I (capital i, as in Install) to fetch the plugin
+
 # vim
 
 ## install plugins manager (https://github.com/junegunn/vim-plug)

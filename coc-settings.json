@@ -1,25 +1,32 @@
 {
-  "suggest.echodocSupport": true,
-  "suggest.maxCompleteItemCount": 20,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",
     "typescriptreact",
     "json",
     "javascriptreact",
+    "sol",
+    "solidity",
     "typescript.tsx"
   ],
-  "eslint.filetypes": [
+  "eslint.probe": [
     "javascript",
-    "typescript",
-    "typescriptreact",
     "javascriptreact",
-    "typescript.tsx"
+    "html",
+    "markdown",
+    "sol",
+    "solidity",
+    "typescript",
+    "typescriptreact"
   ],
   "eslint.autoFixOnSave": true,
+  "eslint.packageManager": "yarn",
+  "eslint.run": "onSave",
   "diagnostic.errorSign": "•",
   "diagnostic.warningSign": "•",
   "diagnostic.infoSign": "•",
+  "diagnostic.displayByAle": true,
+  "prettier.singleQuote": true,
   "languageserver": {
     "solidity": {
       "command": "solc",
@@ -28,5 +35,6 @@
       "rootPatterns": [".git/"],
       "filetypes": ["solidity", "sol"]
     }
-  }
+  },
+  "suggest.maxCompleteItemCount": 20
 }

@@ -11,7 +11,25 @@ Plug 'tc50cal/vim-terminal'                                                     
 Plug 'preservim/tagbar'                                                               " Tagbar for code navigation
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}              " code autompletion
 Plug 'jiangmiao/auto-pairs'                                                           " autoclose pairs
-Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' } " prettier support
+Plug 'dense-analysis/ale'
+Plug 'prettier/vim-prettier', {
+      \   'do': 'yarn install --frozen-lockfile --production',
+      \   'for': [
+      \     'javascript',
+      \     'typescript',
+      \     'css',
+      \     'less',
+      \     'scss',
+      \     'json',
+      \     'graphql',
+      \     'markdown',
+      \     'lua',
+      \     'python',
+      \     'ruby',
+      \     'html',
+      \     'solidity'
+      \   ]
+      \ } " prettier support
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }               " markdown preview
 Plug 'tomlion/vim-solidity'                                                           " Syntax files for solidity 
 Plug 'tpope/vim-commentary'                                                           " Code commenter 
@@ -98,10 +116,70 @@ function! PrettierInit()
  let g:prettier#autoformat_require_pragma = 0
 endfunction
 
+function! CocInit()
+  " GoTo code navigation.
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+endfunction
+
+" function! AleInit()
+  " use quickfix list instead of the loclist
+  let g:ale_set_loclist = 0
+  let g:ale_set_quickfix = 1
+
+  " let g:ale_open_list = 1
+  " Set this if you want to.
+  " This can be useful if you are combining ALE with
+  " some other plugin which sets quickfix errors, etc.
+  " let g:ale_keep_list_window_open = 1
+
+  let g:ale_sign_error = '●'
+  let g:ale_sign_warning = '.'
+
+  " let g:ale_fixers = {
+  "       \   'javascript': ['prettier', 'eslint'],
+  "       \   'css': ['prettier', 'eslint'],
+  "       \   'sol': ['prettier', 'eslint']
+  "       \ }
+  " let g:ale_linters = {
+  "       \  'solidity': ['solc', 'solhint', 'solium']
+  "       \ }
+  
+
+  let g:ale_fixers = {
+  \   '*': ['remove_trailing_lines','trim_whitespaces'],
+  \   'javascript': [
+  \       'eslint',
+  \       'prettier',
+  \   ],
+  \   'typescript': [
+  \       'eslint',
+  \       'prettier',
+  \   ],
+  \   'html': [
+  \       'angular',
+  \       'htmlhint',
+  \   ]
+  \}
+
+  let b:ale_fixers = ['prettier', 'eslint']
+  " let g:ale_fixers = {
+  "       \ '*': ['remove_trailing_lines','trim_whitespaces'],
+  "       \  'javascript': ['prettier', 'eslint'],
+  "       \  'solidity': ['prettier', 'eslint']
+  "       \ }
+  let g:ale_linters_explicit = 1
+  let g:ale_fix_on_save = 1
+
+" endfunction
+
 autocmd VimEnter * call AirlineInit()
 autocmd VimEnter * call LookAndFeelInit()
 autocmd VimEnter * call TreeNavigationInit()
 autocmd VimEnter * call TagBarInit()
 autocmd VimEnter * call PrettierInit()
-
+autocmd VimEnter * call CocInit()
+" autocmd VimEnter * call AleInit()
 

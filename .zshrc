@@ -19,3 +19,7 @@ compinit
 
 # kubectl autocomplete
 source <(kubectl completion zsh)
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

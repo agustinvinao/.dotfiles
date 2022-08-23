@@ -1,6 +1,6 @@
 [user]
-  	name = Agustin Vinao 
-  	email = agustinvinao@gmail.com
+	name = Agustin Vinao
+	email = agustinvinao@gmail.com
 [core]
   	autosetuprebase = true
   	editor = vim
@@ -21,3 +21,5 @@
 	ci = commit
 [pull]
 	rebase = true
+[init]
+	defaultBranch = master

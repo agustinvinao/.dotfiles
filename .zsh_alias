@@ -22,3 +22,6 @@ alias solc='snap run solc'
 # osx
 ## batcat
 alias cat='bat'
+
+## python
+alias python="python3"

@@ -47,4 +47,11 @@ return {
       return require "configs.null-ls"
     end,
   },
+  {
+    "nvim-tree/nvim-tree.lua",
+    config = function(_, opts)
+      opts.actions = { open_file = { resize_window = false } }
+      require("nvim-tree").setup(opts)
+    end,
+  },
 }
